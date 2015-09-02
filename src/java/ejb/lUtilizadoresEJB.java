@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package factory;
+package ejb;
 
 import dao.Conexao;
+import entidades.Utilizador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,20 +14,21 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import entidades.Utilizador;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author ab
  */
-public class FactoryUtilizador extends Factory{
-    
-    @Override
+@Stateless
+public class lUtilizadoresEJB extends Factory{
+
+
     public  Object newElement() {
         return new Utilizador();
     }
 
-    @Override
+
     public  Object read(Object primaryKey){
        Utilizador u;
        // Criar um produto
@@ -57,7 +59,6 @@ public class FactoryUtilizador extends Factory{
        return u;
     }
 
-    @Override
     public  int delete(Object primaryKey){
        int ris = 0;
        String query = "DELETE FROM utilizador WHERE utilizadorId = ?";
@@ -74,7 +75,7 @@ public class FactoryUtilizador extends Factory{
        return ris;
     }
 
-    @Override
+
     public int update(Object o){
         int ris = 0;
         try {
@@ -106,7 +107,7 @@ public class FactoryUtilizador extends Factory{
         return ris;
     }
 
-    @Override
+
     public Object insert(Object o){
         boolean ris = false;
         try {
@@ -136,7 +137,6 @@ public class FactoryUtilizador extends Factory{
         return null;
     }
 
-    @Override
     public java.util.ArrayList<Object> selectAll() {
         String query = "SELECT * FROM utilizador";
         Utilizador u;
@@ -207,5 +207,4 @@ public java.util.ArrayList<Object> login(String email, String password) {
 
     }
      
-    
 }

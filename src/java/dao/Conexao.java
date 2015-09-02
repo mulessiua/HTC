@@ -20,7 +20,7 @@ public class Conexao {
     public static Connection getInstance() throws Exception{
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/";
-        String dbName = "emoz";
+        String dbName = "htc";
         String userName = "root";
         String password = "";
 
